@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Customer</title>
+</head>
+<body>
+    <h1 style="color: red">Create Customer</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name">
+        <br><br>
+        <input type="text" name="phone" placeholder="Phone">
+        <br><br>
+        <textarea name="address" placeholder="Address"></textarea>
+        <br><br>
+        <button type="submit">Create</button>
+    </form>
+    <br>
+    <a href="{% url 'customers' %}">Back</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+</head>
+<body>
+    <h1 style="color: red;">Products</h1>
+    <a href="{% url 'home' %}">Home</a>
+    <br><br>
+    <a href="{% url 'create_product' %}">Create Product</a>
+    <hr>
+    {% for product in products %}
+    <h3><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
+    <p>Description: {{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+    {% endfor %}
+</body>
+</html>
