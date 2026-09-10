@@ -40,7 +40,16 @@ def delete_category(request,id):
 
 
 def products(request):
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
     products = Product.objects.all()
+    if min_price:
+        products = products.filter(price__gte = min_price)
+    if max_price:
+        products = products.filter(price__lte = max_price)
+    search = request.GET.get('search')
+    if search:
+        products = products.filter(name__icontains = search)
     return render(request,'products.html',{'products':products})
 
 def product_detail(request,id):
